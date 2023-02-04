@@ -1,17 +1,19 @@
 import {NavigationContainer} from '@react-navigation/native'
 import React from 'react'
-
+import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {TailwindProvider} from 'tailwind-rn'
-import CustomerScreen from './src/screens/CustomerScreen'
+import RootNavigator from './src/navigator/RootNavigator'
 import utilities from './tailwind.json'
 
 function App(): JSX.Element {
   return (
     // @ts-ignore
     <TailwindProvider utilities={utilities}>
-      <NavigationContainer>
-        <CustomerScreen />
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </TailwindProvider>
   )
 }
