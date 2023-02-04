@@ -1,5 +1,5 @@
 module.exports = {
-  content: [],
+  content: ['./**/*.tsx'], // Any file in inside directory -> any filename with tsx ext
   theme: {
     extend: {},
   },
