@@ -1,0 +1,32 @@
+import {useQuery} from '@apollo/client'
+import {useEffect, useState} from 'react'
+import {GET_ORDERS} from '../graphql/queries'
+
+const useCustomerOrders = () => {
+  const {loading, error, data} = useQuery(GET_ORDERS)
+  const [orders, setOrders] = useState<Order[]>([])
+
+  useEffect(() => {
+    if (!data) return
+
+    const ordersData: Order[] = data
+      .getOrders()
+      .map(({value}: OrderResponse) => ({
+        carrier: value.carrier,
+        createdAt: value.createdAt,
+        shippingCost: value.shippingCost,
+        trackingId: value.trackingId,
+        trackingItems: value.trackingItems,
+        Lat: value.Lat,
+        Lng: value.Lng,
+        Address: value.Address,
+        City: value.City,
+      }))
+
+    setOrders(ordersData)
+  }, [data])
+
+  return {loading, error, orders}
+}
+
+export default useCustomerOrders
