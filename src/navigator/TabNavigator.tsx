@@ -22,26 +22,25 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarActiveTintColor: '#59c1cc',
-        tabBarInactiveBackgroundColor: 'gray',
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({focused}) => {
-          // if (route.name === 'Customers') {
-          return (
-            <Icon
-              name="users"
-              type="entypo"
-              color={focused ? '#59c1cc' : 'gray'}
-            />
-          )
-          // } else if (route.name === 'Orders') {
-          //   return (
-          //     <Icon
-          //       name="box"
-          //       type="entypo"
-          //       color={focused ? '#eb6a7c' : 'gray'}
-          //     />
-          //   )
-          // }
+          if (route.name === 'Customers') {
+            return (
+              <Icon
+                name="users"
+                type="entypo"
+                color={focused ? '#59c1cc' : 'gray'}
+              />
+            )
+          } else if (route.name === 'Orders') {
+            return (
+              <Icon
+                name="box"
+                type="entypo"
+                color={focused ? '#eb6a7c' : 'gray'}
+              />
+            )
+          }
         },
       })}>
       <Tab.Screen name="Customers" component={CustomerScreen} />
