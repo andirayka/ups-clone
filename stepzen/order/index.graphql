@@ -20,6 +20,11 @@ type OrderList {
 }
 
 type Query {
+  getOrderId(id: ID): Order
+    @rest(
+      endpoint: "https://ups-clone-1c1a7-default-rtdb.asia-southeast1.firebasedatabase.app/orders/$id.json"
+    )
+
   getOrders: [OrderList]  # Array of OrderList
     @rest(
       endpoint: "https://ups-clone-1c1a7-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json"
