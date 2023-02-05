@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
 import {useQuery} from '@apollo/client'
+import {useEffect, useState} from 'react'
 import {GET_ORDERS} from '../graphql/queries'
 
-const useCustomerOrders = (userId: string) => {
+const useOrders = () => {
   const {loading, error, data} = useQuery(GET_ORDERS)
   const [orders, setOrders] = useState<Order[]>([])
 
@@ -23,14 +23,10 @@ const useCustomerOrders = (userId: string) => {
         City: value.City,
       }))
 
-    const customerOrders = ordersData.filter(
-      order => order.trackingItems.customerid === userId,
-    )
-
-    setOrders(customerOrders)
-  }, [data, userId])
+    setOrders(ordersData)
+  }, [data])
 
   return {loading, error, orders}
 }
 
-export default useCustomerOrders
+export default useOrders

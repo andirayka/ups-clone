@@ -19,7 +19,8 @@
     "start": "react-native start",
     "test": "jest",
     "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\"",
+    "stepzen_start": "cd stepzen && stepzen start --dashboard=local"
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",
