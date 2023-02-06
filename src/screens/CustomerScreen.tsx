@@ -43,7 +43,7 @@ const CustomerScreen = () => {
 
       {data?.getCustomers
         ?.filter((customer: CustomerList) =>
-          customer.value.name.includes(input),
+          customer.value.name.toLowerCase().includes(input.toLocaleLowerCase()),
         )
         .map(({name: ID, value: {email, name}}: CustomerResponse) => (
           <CustomerCard key={ID} email={email} name={name} userId={ID} />

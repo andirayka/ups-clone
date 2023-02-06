@@ -23,6 +23,7 @@ const useCustomerOrders = (userId: string) => {
       }),
     )
 
+    // console.log(ordersData[0].trackingItems)
     const customerOrders = ordersData.filter(
       order => order.trackingItems.customerid === userId,
     )
