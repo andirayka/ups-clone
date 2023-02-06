@@ -7,8 +7,7 @@ import utilities from './tailwind.json'
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
 
 const client = new ApolloClient({
-  uri: 'https://dashboard.stepzen.com/explorer?endpoint=api%2Fflippant-gnat',
-  // uri: 'http://localhost:5001/api/flippant-gnat',
+  uri: 'http://localhost:5001/api/flippant-gnat',
   cache: new InMemoryCache(),
 })
 
