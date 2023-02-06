@@ -17,7 +17,7 @@ const RootNavigator = () => {
         <RootStack.Screen name="Main" component={TabNavigator} />
       </RootStack.Group>
 
-      <RootStack.Group>
+      <RootStack.Group screenOptions={{presentation: 'modal'}}>
         <RootStack.Screen
           options={{headerShown: false}}
           name="MyModal"
