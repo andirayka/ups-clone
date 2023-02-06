@@ -9,9 +9,8 @@ const useCustomerOrders = (userId: string) => {
   useEffect(() => {
     if (!data) return
 
-    const ordersData: Order[] = data
-      .getOrders()
-      .map(({value}: OrderResponse) => ({
+    const ordersData: Order[] = data.getOrders.map(
+      ({value}: OrderResponse) => ({
         carrier: value.carrier,
         createdAt: value.createdAt,
         shippingCost: value.shippingCost,
@@ -21,7 +20,8 @@ const useCustomerOrders = (userId: string) => {
         Lng: value.Lng,
         Address: value.Address,
         City: value.City,
-      }))
+      }),
+    )
 
     const customerOrders = ordersData.filter(
       order => order.trackingItems.customerid === userId,
