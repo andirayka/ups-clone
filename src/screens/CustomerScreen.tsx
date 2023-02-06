@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useState} from 'react'
 import {useTailwind} from 'tailwind-rn/dist'
 import {useNavigation, CompositeNavigationProp} from '@react-navigation/native'
-import {ActivityIndicator, ScrollView, Text} from 'react-native'
+import {ActivityIndicator, ScrollView} from 'react-native'
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs'
 import {TabStackParamList} from '../navigator/TabNavigator'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'

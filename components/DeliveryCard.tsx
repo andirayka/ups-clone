@@ -1,18 +1,14 @@
-import {View, Text, TouchableOpacity} from 'react-native'
+import {View, Text} from 'react-native'
 import React from 'react'
 import {useTailwind} from 'tailwind-rn/dist'
-import {useNavigation} from '@react-navigation/native'
-import {CustomersScreenNavigationProp} from '../src/screens/CustomerScreen'
 import {Card, Divider, Icon} from '@rneui/themed'
-import useOrders from '../hooks/useOrders'
+import MapView, {Marker} from 'react-native-maps'
 
 type Props = {
   order: Order
 }
 const DeliveryCard = ({order}: Props) => {
-  const {error, loading, orders} = useOrders()
   const tw = useTailwind()
-  const navigation = useNavigation<CustomersScreenNavigationProp>()
 
   return (
     <Card
@@ -43,7 +39,7 @@ const DeliveryCard = ({order}: Props) => {
           <Divider color="white" />
         </View>
 
-        <View style={tw('mx-auto')}>
+        <View style={tw('mx-auto pb-5')}>
           <Text style={tw('text-base text-center text-white font-bold my-5')}>
             Address
           </Text>
@@ -66,6 +62,24 @@ const DeliveryCard = ({order}: Props) => {
           ))}
         </View>
       </View>
+
+      <MapView
+        initialRegion={{
+          latitude: order.Lat,
+          longitude: order.Lng,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }}
+        style={[tw('w-full'), {height: 200}]}>
+        {order.Lat && order.Lng && (
+          <Marker
+            coordinate={{latitude: order.Lat, longitude: order.Lng}}
+            title="Delivery Location"
+            description={order.Address}
+            identifier="destination"
+          />
+        )}
+      </MapView>
     </Card>
   )
 }
