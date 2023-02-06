@@ -40,7 +40,7 @@ const OrderCard = ({item}: Props) => {
               {item.carrier}-{item.trackingId}
             </Text>
             <Text style={tw('text-gray-500 text-xl')}>
-              {item.trackingItems.customer.name}
+              {item.trackingItems?.customer?.name}
             </Text>
           </View>
 
